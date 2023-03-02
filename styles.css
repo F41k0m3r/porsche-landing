@@ -3,12 +3,12 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
-    overflow-x: hidden;
     padding: 0;
     -moz-user-select: none;
     user-select: none;
 }
 html {
+    overflow-x: hidden;
     background-color: #111;
     font-family: 'Multi', sans-serif;
 }
@@ -101,6 +101,114 @@ html {
     color: white;
     opacity: 1;
     transition: opacity .3s ease-in 0.4s;
+}
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sidebar {
+    height: 100%;
+    width: 35%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sidebar > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.sidebar h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: -30px;
+}
+
+.main-slide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 65%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.main-slide > div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.down-button {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1rem;
+}
+.up-button {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.down-button:hover {
+    color: #222;
+}
+.up-button:hover {
+    color: #222;
+}
+
+.down-button:focus {
+    outline: none;
+}
+.up-button:focus {
+    outline: none;
+}
+
+.container .controls button {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    z-index: 100;
+}
+.container h1{
+    font-size: 210%;
+    font-weight: bolder;
+}
+
+.container .controls .down-button {
+    transform: translateX(-100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.container .controls .up-button {
+    transform: translateY(-100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.text-slider {
+    width: 70%;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 @media (max-width: 600px) {
     .button{

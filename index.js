@@ -1,5 +1,10 @@
 const slides = document.querySelectorAll('.slide')
+const sidebar = document.querySelector('.sidebar')
+const container = document.querySelector('.container')
+const slidesCount = document.querySelector('.main-slide').querySelectorAll('div').length
+let activeSlideIndex = 0
 
+sidebar.style.top = ` -${(slidesCount - 5) * 100}vh `
 
 document.querySelector('.button').onclick = () => {
     document.querySelector('#block2').scrollIntoView({
@@ -17,3 +22,28 @@ slides.forEach((slide) => {
     })
 })
 
+const changeSlide = (direction) => {
+    console.log(activeSlideIndex);
+    if (direction === 'up') {
+        activeSlideIndex++
+        if (activeSlideIndex === slidesCount){
+            activeSlideIndex = 0
+        }
+    }else if (direction === 'down') {
+        activeSlideIndex--
+        if (activeSlideIndex < 0){
+            activeSlideIndex = slidesCount - 1
+        }
+    }else {
+        console.log('wrong direction');
+    }
+    const height = container.clientHeight
+    document.querySelector('.main-slide').style.transform = `translateY(-${activeSlideIndex * height}px)`
+    sidebar.style.transform = `translateY(-${activeSlideIndex * height}px)`
+}
+document.querySelector('.up-button').addEventListener('click', ()=>{
+    changeSlide('down')
+})
+document.querySelector('.down-button').addEventListener('click', ()=>{
+    changeSlide('up')
+})
