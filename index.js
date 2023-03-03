@@ -25,14 +25,15 @@ slides.forEach((slide) => {
 const changeSlide = (direction) => {
     console.log(activeSlideIndex);
     if (direction === 'up') {
-        activeSlideIndex++
-        if (activeSlideIndex === slidesCount){
-            activeSlideIndex = 0
-        }
-    }else if (direction === 'down') {
         activeSlideIndex--
         if (activeSlideIndex < 0){
             activeSlideIndex = slidesCount - 1
+        }
+
+    }else if (direction === 'down') {
+        activeSlideIndex++
+        if (activeSlideIndex === slidesCount){
+            activeSlideIndex = 0
         }
     }else {
         console.log('wrong direction');
@@ -42,8 +43,16 @@ const changeSlide = (direction) => {
     sidebar.style.transform = `translateY(-${activeSlideIndex * height}px)`
 }
 document.querySelector('.up-button').addEventListener('click', ()=>{
-    changeSlide('down')
+    changeSlide('up')
 })
 document.querySelector('.down-button').addEventListener('click', ()=>{
-    changeSlide('up')
+    changeSlide('down')
+})
+document.addEventListener('keydown', (event)=>{
+    if (event.key === 'ArrowUp') {
+        changeSlide('up')
+    }
+    if (event.key === 'ArrowDown') {
+        changeSlide('down')
+    }
 })
